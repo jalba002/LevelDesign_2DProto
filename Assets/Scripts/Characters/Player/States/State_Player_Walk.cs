@@ -42,12 +42,7 @@ public class State_Player_Walk : State
     public override void OnStateCheckTransition()
     {
         base.OnStateCheckTransition();
-        if (!attachedController.OnGround)
-        {
-            Machine.SwitchState<State_Player_Jump>();
-        }
-        
-
+       
         if (Input.GetKey(KeyCode.S) && Input.GetKeyDown(KeyCode.Space))
         {
             Machine.SwitchState<State_Player_PlatformDrop>();

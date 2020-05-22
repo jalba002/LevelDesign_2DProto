@@ -12,4 +12,7 @@ public class PlayerProperties : CharacterProperties
 
     [Header("Dash Settings")] public float dashDuration = 0.5f;
     public float dashSpeed = 8f;
+
+    [Header("Drop Settings")] public float dropDuration = 0.25f;
+    public float dropSpeed = 4f;
 }

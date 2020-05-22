@@ -50,8 +50,8 @@ public class State_Player_PlatformDrop : State
         {
             ignoredCollider = hitInfo.collider;
             IgnoreCollider(ignoredCollider, true);
-            currentDuration = 0.5f;
-            attachedController.rigidbody.AddForce(0, -attachedController.playerProperties.dashSpeed, 0f,
+            currentDuration = attachedController.playerProperties.dropDuration;
+            attachedController.rigidbody.AddForce(0, -attachedController.playerProperties.dropSpeed, 0f,
                 ForceMode.Impulse);
         }
         else

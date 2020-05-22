@@ -10,8 +10,9 @@ public class PlayerController : CharacterController
 
     [Header("Raycast")] public LayerMask groundLayer;
     public GameObject originPosition;
+    public float radius = 0.5f;
     public float raycastRange = 0.5f;
-    
+
     public bool OnGround { get; set; }
     private Coroutine OnGroundCoroutine;
 
@@ -56,7 +57,16 @@ public class PlayerController : CharacterController
         while (true)
         {
             yield return new WaitForSeconds(0.1f);
-            OnGround = !Physics.Raycast(originPosition.transform.position, Vector3.down * raycastRange, groundLayer);
+            OnGround = Physics.SphereCast(originPosition.transform.position, radius, Vector3.down * raycastRange,
+                out var hitInfo, groundLayer);
         }
+    }
+
+    public void KillPlayer()
+    {
+        if (IsDead) return;
+
+        IsDead = true;
+        stateMachine.enabled = false;
     }
 }
