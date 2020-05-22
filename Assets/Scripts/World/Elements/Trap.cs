@@ -10,7 +10,7 @@ public class Trap : MonoBehaviour
     void Start()
     {
         if (spawnPoint == null)
-            spawnPoint = GetComponent<SpawnPoint>().transform;
+            spawnPoint = FindObjectOfType<SpawnPoint>().transform;
     }
 
     private void OnCollisionEnter(Collision other)
