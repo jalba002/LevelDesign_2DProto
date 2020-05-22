@@ -72,8 +72,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   originPosition: {fileID: 7790669554847884337}
-  radius: 0.1
-  raycastRange: 0.1
+  radius: 0.2
+  raycastRange: 0.2
 --- !u!114 &7790669553587034551
 MonoBehaviour:
   m_ObjectHideFlags: 0

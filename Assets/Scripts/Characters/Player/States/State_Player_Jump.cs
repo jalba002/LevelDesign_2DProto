@@ -38,8 +38,14 @@ public class State_Player_Jump : State
             doubleJumped = true;
         }
 
-        attachedController.rigidbody.velocity = Vector3.ClampMagnitude(attachedController.rigidbody.velocity,
-            attachedController.playerProperties.maxSpeed);
+        Vector3 newVelocity = attachedController.rigidbody.velocity;
+        attachedController.rigidbody.velocity =
+            new Vector3(
+                Mathf.Clamp(attachedController.rigidbody.velocity.x, -attachedController.playerProperties.maxSpeed,
+                    attachedController.playerProperties.maxSpeed),
+                attachedController.rigidbody.velocity.y,
+                0f
+                );
     }
 
     public override void OnStateFixedTick(float fixedTime)

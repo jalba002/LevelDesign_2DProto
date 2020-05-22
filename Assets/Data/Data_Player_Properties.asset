@@ -15,7 +15,9 @@ MonoBehaviour:
   SlowWalkSpeed: 5
   WalkSpeed: 5
   RunSpeed: 5
-  JumpSpeed: 10
+  JumpSpeed: 7
   maxSpeed: 6
   dashDuration: 0.4
   dashSpeed: 8
+  dropDuration: 0.25
+  dropSpeed: 4

@@ -17,7 +17,7 @@ public class State_Player_Walk : State
     public override void OnStateTick(float deltaTime)
     {
         base.OnStateTick(deltaTime);
-        
+
         if (Input.GetKey(KeyCode.D))
         {
             attachedController.rigidbody.AddForce(
@@ -30,8 +30,12 @@ public class State_Player_Walk : State
                 -attachedController.playerProperties.WalkSpeed, 0, 0,
                 ForceMode.Acceleration);
         }
-        attachedController.rigidbody.velocity = Vector3.ClampMagnitude(attachedController.rigidbody.velocity, attachedController.playerProperties.maxSpeed);
 
+        Vector3 newVelocity = attachedController.rigidbody.velocity;
+        attachedController.rigidbody.velocity = Vector3.ClampMagnitude(attachedController.rigidbody.velocity,
+            attachedController.playerProperties.maxSpeed);
+        attachedController.rigidbody.velocity = new Vector3(attachedController.rigidbody.velocity.x, newVelocity.y,
+            attachedController.rigidbody.velocity.z);
     }
 
     public override void OnStateFixedTick(float fixedTime)
@@ -42,13 +46,13 @@ public class State_Player_Walk : State
     public override void OnStateCheckTransition()
     {
         base.OnStateCheckTransition();
-       
+
         if (Input.GetKey(KeyCode.S) && Input.GetKeyDown(KeyCode.Space))
         {
             Machine.SwitchState<State_Player_PlatformDrop>();
             return;
         }
-        
+
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W))
         {
             Machine.SwitchState<State_Player_Jump>();
