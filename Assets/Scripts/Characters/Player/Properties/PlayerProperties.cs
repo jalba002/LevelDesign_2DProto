@@ -8,6 +8,9 @@ public class PlayerProperties : CharacterProperties
 {
     public float JumpSpeed = 5f;
 
+    [Space(5)] public float gravity = 10f;
+    public float maxVerticalSpeed = 5f;
+
     [Header("Rigidbody Settings")] public float maxSpeed = 5f;
 
     [Header("Dash Settings")] public float dashDuration = 0.5f;

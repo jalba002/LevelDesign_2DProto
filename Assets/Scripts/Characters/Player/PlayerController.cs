@@ -50,6 +50,19 @@ public class PlayerController : CharacterController
         {
             stateMachine.UpdateTick(Time.deltaTime);
         }
+
+        if (transform.position.y <= -10f)
+        {
+            this.gameObject.transform.position = FindObjectOfType<SpawnPoint>().transform.position;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (stateMachine.isActiveAndEnabled)
+        {
+            stateMachine.FixedUpdateTick(Time.fixedTime);
+        }
     }
 
     IEnumerator CheckGround()
